@@ -53,10 +53,10 @@ export default class componentName extends Component {
     }
 
     //remove comments
-    handleClear=()=>{
+    handleClear=(id)=>{
         this.setState(()=>{
             return{
-                comments:[]
+                comments: this.state.comments.filter(item=> item.id !==id)
             }
         },()=>{
             this.getData();
@@ -120,7 +120,7 @@ export default class componentName extends Component {
                                          
                                             >{comment.content} </h3>
                                             <button className="btn btn-danger" style={{width:"100px"}}  
-                                              onClick={()=>this.handleClear()}>Remove</button>
+                                              onClick={()=>this.handleClear(comment.id)}>Remove</button>
                                         </div>
  
                                         )
